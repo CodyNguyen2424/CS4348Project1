@@ -43,3 +43,15 @@ The logger should now be working as intended.
 
 For my next session, I plan to start working on encryption.py. 
 I want to work on this next because it should be easier to test the encryption and decryption functions separately before connecting everything together using the driver program.
+
+# 10-14-2026 4:06pm - Session 3 Start
+Now that the logger works, I plan to start the encryption program, encryption.py.
+This program will encrypt and decrypt strings using the Vigenere cipher.
+
+I plan to use the Vigenere cipher like how it is in the wiki given to us in the project instructions.
+From what I see, the cypher uses a key to shift each letter of the string.
+I will need to convert the letters to numbers, do some calculation, and then convert them back to letters.
+Encryption should work by adding the shift calculation and decryption should work by subtracting the shift calculation.
+
+For this session, I plan to create encryption.py and implement the functions for encrypting and decrypting strings. 
+I want to focus on getting the Vigenère cipher calculations working.
