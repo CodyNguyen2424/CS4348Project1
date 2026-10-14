@@ -12,4 +12,15 @@ I have created a repo on github and uploaded the project requirement files and g
 I have thought of a rough outline on how I want to go about this project.
 I plan to begin with the logger, since it has the simplest functionality. 
 After completing and testing it, I will work on the encryption program and then the driver.
-I need it to accept a log filename, read messages from standard input, and write them
+I need it to accept a log filename, read messages from standard input, and write them with the required timestamps and action labels.
+
+# 10-14-2026 12:45am - Session 1 End
+
+I have created the logger.py program.
+The program is supposed to read input and record it in a log file, which I am using test.log for testing.
+I implemented a while loop to keep reading input, separated the action from the message, and added a date to each log entry.
+
+However, I encountered some problems, and the program is not working correctly yet.
+Some of the issues include the log file being overwritten when the program starts again, the date not displaying in the required format, and the program not stopping when QUIT is entered. 
+I also noticed that entering an empty line causes an error. 
+I will need to fix these problems before the logger is complete.
