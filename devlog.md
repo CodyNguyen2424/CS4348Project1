@@ -55,3 +55,22 @@ Encryption should work by adding the shift calculation and decryption should wor
 
 For this session, I plan to create encryption.py and implement the functions for encrypting and decrypting strings. 
 I want to focus on getting the Vigenère cipher calculations working.
+
+# 10-14-2026 4:58pm - Session 3 End
+I created encryption.py and implemented the encryption and decryption functions using the Vigenère cipher.
+I based it off of the wiki page given to us.
+The cipher uses a key to shift each letter in the original string to create an encrypted string.
+
+I created an alphabet string containing all the uppercase letters from A to Z. 
+Each letter has a position from 0 to 25. 
+For encryption, I used the equation C = (P + K) % 26.
+P is the original letter's position, K is the key letter's position, and C is the encrypted letter's position. 
+For decryption, I used P = (C - K) % 26 to reverse the process. 
+I also used the modulo operator to repeat the key when the string is longer than the password.
+
+After implementing both functions, I tested the program using HELLO as both the original string and the key. 
+When I ran encryption.py, the program encrypted HELLO into OIWWC. 
+It then decrypted OIWWC back into HELLO using the same key. 
+The test worked, so both functions appear to be working correctly.
+
+For my next session, I plan to implement the commands for the encryption program, including PASS, ENCRYPT, DECRYPT, and QUIT.

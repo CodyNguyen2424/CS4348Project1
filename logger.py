@@ -1,10 +1,9 @@
-
 import sys
 from datetime import datetime
 
 
 def main():
-    # Gives logger the name of the log file
+    # Gives logger name of log file
     if len(sys.argv) != 2:
         print("Usage: python3 logger.py <log_file_name>")
         return
@@ -30,7 +29,7 @@ def main():
         if line == "":
             continue
 
-        # First word is the action and rest is the message
+        # First word is action and rest is message
         parts = line.split(maxsplit=1)
         action = parts[0]
 
