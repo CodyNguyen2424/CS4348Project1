@@ -24,3 +24,11 @@ However, I encountered some problems, and the program is not working correctly y
 Some of the issues include the log file being overwritten when the program starts again, the date not displaying in the required format, and the program not stopping when QUIT is entered. 
 I also noticed that entering an empty line causes an error. 
 I will need to fix these problems before the logger is complete.
+
+# 10-14-2026 10:14am - Session 2 Start
+During my last session, I created the logger.py program, but there were several problems.
+The program is supposed to read input from the user and record it in test.log.
+I think some of the problems are caused by how I am opening the file and how I am checking the input in the while loop.
+It should break the while loop when the user inputs QUIT.
+The timestamp format bug should just be a simple syntax error on my part.
+I plan to fix these bugs and finish logger.py in this session.
