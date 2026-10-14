@@ -1,5 +1,4 @@
 # 10-13-2026 10:23pm - Initial Entry
-
 I have reviewed looked at the requirements for Project 1.
 I will need at least 2 entries per session to record my thoughts.
 There are 3 programs: a logger, an encryption program, and a driver.
@@ -7,7 +6,6 @@ The driver will use subprocesses and pipes to communicate with the other two pro
 As of right now, I am wondering where I should start and what would be the easiest program to begin with.
 
 # 10-13-2026 11:08pm - Session 1 Start
-
 I have created a repo on github and uploaded the project requirement files and given python code.
 I have thought of a rough outline on how I want to go about this project.
 I plan to begin with the logger, since it has the simplest functionality. 
@@ -15,7 +13,6 @@ After completing and testing it, I will work on the encryption program and then 
 I need it to accept a log filename, read messages from standard input, and write them with the required timestamps and action labels.
 
 # 10-14-2026 12:45am - Session 1 End
-
 I have created the logger.py program.
 The program is supposed to read input and record it in a log file, which I am using test.log for testing.
 I implemented a while loop to keep reading input, separated the action from the message, and added a date to each log entry.
@@ -32,3 +29,17 @@ I think some of the problems are caused by how I am opening the file and how I a
 It should break the while loop when the user inputs QUIT.
 The timestamp format bug should just be a simple syntax error on my part.
 I plan to fix these bugs and finish logger.py in this session.
+
+# 10-14-2026 10:57am - Session 2 End
+I finished fixing the problems with logger.py.
+One of the problems was that the log file was being overwritten every time I ran the program. 
+This was because I was using "w" when opening the file. 
+I changed it to "a" so that new entries would be added without deleting the previous ones.
+I fixed the syntax of the date to be in the right format.
+I also fixed the while loop by changing continue to break when QUIT is entered.
+The last problem was that entering an empty line would cause an error because the program tried to access an empty list.
+I fixed this by checking for empty input before splitting the line.
+The logger should now be working as intended.
+
+For my next session, I plan to start working on encryption.py. 
+I want to work on this next because it should be easier to test the encryption and decryption functions separately before connecting everything together using the driver program.

@@ -12,15 +12,22 @@ def main():
     file_name = sys.argv[1]
 
     # Open file
-    log_file = open(file_name, "w")
+    log_file = open(file_name, "a")
 
     while True:
         # Read users line 
         line = sys.stdin.readline()
 
+        if line == "":
+            break
+
         line = line.strip()
 
         if line == "QUIT":
+            break
+
+        # Ignore empty lines
+        if line == "":
             continue
 
         # First word is the action and rest is the message
@@ -33,7 +40,7 @@ def main():
 
         # Date format
         current_time = datetime.now()
-        timestamp = current_time.strftime("%m-%d-%Y")
+        timestamp = current_time.strftime("%Y-%m-%d %H:%M")
 
         # Timestamp, action, and message
         log_entry = timestamp + " [" + action + "]"
