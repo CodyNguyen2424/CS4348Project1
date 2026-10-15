@@ -74,3 +74,16 @@ It then decrypted OIWWC back into HELLO using the same key.
 The test worked, so both functions appear to be working correctly.
 
 For my next session, I plan to implement the commands for the encryption program, including PASS, ENCRYPT, DECRYPT, and QUIT.
+
+# 10-15-2026 2:47pm - Session 4 Start
+Now that encryption and decryption are working, I plan to implement the command processing for encryption.py.
+I need to implement the PASS, ENCRYPT, DECRYPT, and QUIT commands.
+The PASS command should store the current passkey so that the program can use it for encryption and decryption. 
+The ENCRYPT and DECRYPT commands will call the functions I created in the previous session. 
+I also need to make the program return RESULT when a command succeeds and ERROR when something goes wrong.
+
+I plan to use a while loop to continuously read commands from standard input like how I implemented the logger. 
+The program should separate the command from its argument.
+It should perform the correct operation depending on the command entered. 
+I will also need to make sure the program stops when it receives QUIT. 
+My goal for this session is to get the encryption program responding to commands.
