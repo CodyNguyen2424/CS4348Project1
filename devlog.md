@@ -87,3 +87,17 @@ The program should separate the command from its argument.
 It should perform the correct operation depending on the command entered. 
 I will also need to make sure the program stops when it receives QUIT. 
 My goal for this session is to get the encryption program responding to commands.
+
+# 10-15-2026 3:56pm - Session 4 End
+I updated encryption.py to handle the PASS, ENCRYPT, DECRYPT, and QUIT commands. 
+I added a main function with a while loop that continuously reads commands from standard input. T
+he program separates the command from its argument and uses if statements to determine what to do. 
+I also added a current_key variable to store the password and made the program return RESULT or ERROR depending on the command.
+
+There are several bugs and the program is not working as intended yet.
+One problem is that the program forgets the password after encrypting a string. 
+Another problem is that trying to encrypt a string without setting a password causes a ZeroDivisionError.
+I also noticed that the ENCRYPT command only prints the encrypted string instead of including RESULT before it.
+
+I plan to fix these problems and test the encryption program later in another session.
+

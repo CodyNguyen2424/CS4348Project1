@@ -1,4 +1,7 @@
+import sys
+
 alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+
 
 def encrypt_text(text, key):
     encrypted_text = ""
@@ -52,13 +55,57 @@ def decrypt_text(text, key):
     return decrypted_text
 
 
-# Test encryption and decryption
-text = "HELLO"
-key = "HELLO"
+def main():
+    current_key = ""
 
-encrypted = encrypt_text(text, key)
-print("Original:", text)
-print("Encrypted:", encrypted)
+    while True:
+        line = sys.stdin.readline()
 
-decrypted = decrypt_text(encrypted, key)
-print("Decrypted:", decrypted)
+        if line == "":
+            break
+
+        line = line.strip()
+
+        if line == "":
+            continue
+
+        # Separate command and argument
+        parts = line.split(maxsplit=1)
+        command = parts[0]
+
+        argument = ""
+        if len(parts) > 1:
+            argument = parts[1]
+
+        if command == "QUIT":
+            break
+
+        elif command == "PASS":
+            if argument == "":
+                print("ERROR Password cannot be empty", flush=True)
+            else:
+                current_key = argument
+                print("RESULT", flush=True)
+
+        elif command == "ENCRYPT":
+            if argument == "":
+                print("ERROR Text cannot be empty", flush=True)
+            else:
+                result = encrypt_text(argument, current_key)
+                print(result, flush=True)
+                current_key = ""
+
+        elif command == "DECRYPT":
+            if current_key == "":
+                print("ERROR Password not set", flush=True)
+            elif argument == "":
+                print("ERROR Text cannot be empty", flush=True)
+            else:
+                result = decrypt_text(argument, current_key)
+                print("RESULT " + result, flush=True)
+
+        else:
+            print("ERROR Unknown command", flush=True)
+
+
+main()
