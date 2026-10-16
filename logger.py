@@ -51,5 +51,4 @@ def main():
 
     log_file.close()
 
-
 main()

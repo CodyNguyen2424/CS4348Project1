@@ -56,20 +56,24 @@ def decrypt_text(text, key):
 
 
 def main():
+    # Track current password
     current_key = ""
 
+    # Keep reading commands until told to quit
     while True:
         line = sys.stdin.readline()
 
+        # Stop if input pipe is closed
         if line == "":
             break
 
         line = line.strip()
 
+        # Skip empty lines
         if line == "":
             continue
 
-        # Separate command and argument
+        # First word is command and everything after is argument
         parts = line.split(maxsplit=1)
         command = parts[0]
 
@@ -88,12 +92,13 @@ def main():
                 print("RESULT", flush=True)
 
         elif command == "ENCRYPT":
-            if argument == "":
+            if current_key == "":
+                print("ERROR Password not set", flush=True)
+            elif argument == "":
                 print("ERROR Text cannot be empty", flush=True)
             else:
                 result = encrypt_text(argument, current_key)
-                print(result, flush=True)
-                current_key = ""
+                print("RESULT " + result, flush=True)
 
         elif command == "DECRYPT":
             if current_key == "":
@@ -106,6 +111,5 @@ def main():
 
         else:
             print("ERROR Unknown command", flush=True)
-
 
 main()

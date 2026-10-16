@@ -112,3 +112,18 @@ This should be a simple fix by changing the print statement.
 
 I plan to fix these bugs and finish encryption.py. 
 After making the changes, I want to test the program with different passwords, longer strings, and repeating keys.
+
+# 10-15-2026 9:54pm - Session 5 End
+I fixed the bugs from my previous session in encryption.py. 
+The first problem was that the program would forget the password after encrypting a string. 
+I fixed this by removing the line that reset current_key to an empty string after encryption. 
+
+The second problem was that trying to encrypt a string without setting a password caused a ZeroDivisionError. 
+I fixed this by adding an if statement to check whether current_key is empty before calling the encryption function. 
+If no password has been set, the program now returns ERROR Password not set instead of crashing. 
+
+I also fixed the output formatting by adding RESULT before the encrypted string.
+
+encryption.py appears to be working as intended. 
+The program can now handle PASS, ENCRYPT, DECRYPT, and QUIT commands.
+For my next session, I plan to start working on driver.py.
