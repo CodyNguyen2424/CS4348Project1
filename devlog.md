@@ -101,3 +101,14 @@ I also noticed that the ENCRYPT command only prints the encrypted string instead
 
 I plan to fix these problems and test the encryption program later in another session.
 
+# 10-15-2026 8:28pm - Session 5 Start
+There are several bugs that is preventing encryption.py from working correctly.
+One problem was that the program forgot the password after encrypting a string.
+Another problem was that trying to encrypt a string without setting a password caused a ZeroDivisionError. 
+I think this happens because the program tries to use an empty key. 
+I plan to add an if statement to check whether a password has been set before calling the encryption function. 
+I also saw that the ENCRYPT command only prints the encrypted string instead of including RESULT before it. 
+This should be a simple fix by changing the print statement.
+
+I plan to fix these bugs and finish encryption.py. 
+After making the changes, I want to test the program with different passwords, longer strings, and repeating keys.
