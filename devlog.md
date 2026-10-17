@@ -144,3 +144,10 @@ After that, I tested sending PASS HELLO, ENCRYPT HELLO, and DECRYPT OIWWC to the
 I checked test.log and saw that the logger recorded the commands and results with timestamps.
 It looks like all three programs are communicating correctly. 
 For my next session, I plan to implement the interactive user menu and history feature.
+
+# 10-16-2026 11:29pm - Session 7 Start
+driver.py currently uses hardcoded test values, so the user cannot interact with the program yet.
+I plan to implement the interactive menu and history feature. 
+I will create a while loop that continuously displays the available commands.
+I also plan to create a list to store the history of strings entered by the user and the results of encryption and decryption.
+My goal for this session is to get the menu and history working before connecting the user's choices to the encryption program.
