@@ -135,3 +135,12 @@ I plan to look at the cpu.py and mem.py examples provided to understand how to c
 I want to start by getting the driver to send a message to the logger and checking whether it gets recorded in the log file. 
 After that, I plan to have the driver send PASS and ENCRYPT commands to the encryption program and read the RESULT response. 
 My goal for this session is to get all three programs communicating correctly before implementing the user menu and history.
+
+# 10-16-2026 9:44pm - Session 6 End
+I created driver.py and started working on connecting the three programs together. 
+I used the subprocess module and Popen to launch logger.py and encryption.py as two separate child processes.
+I started by having the driver send a START message to the logger to see if it would record the message in test.log. 
+After that, I tested sending PASS HELLO, ENCRYPT HELLO, and DECRYPT OIWWC to the encryption program. 
+I checked test.log and saw that the logger recorded the commands and results with timestamps.
+It looks like all three programs are communicating correctly. 
+For my next session, I plan to implement the interactive user menu and history feature.
