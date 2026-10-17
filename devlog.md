@@ -127,3 +127,11 @@ I also fixed the output formatting by adding RESULT before the encrypted string.
 encryption.py appears to be working as intended. 
 The program can now handle PASS, ENCRYPT, DECRYPT, and QUIT commands.
 For my next session, I plan to start working on driver.py.
+
+# 10-16-2026 8:52pm - Session 6 Start
+Now that both logger.py and encryption.py are working, I plan to start working on driver.py.
+For this session, I plan to focus on creating the processes and setting up pipes.
+I plan to look at the cpu.py and mem.py examples provided to understand how to create processes and send information between them.
+I want to start by getting the driver to send a message to the logger and checking whether it gets recorded in the log file. 
+After that, I plan to have the driver send PASS and ENCRYPT commands to the encryption program and read the RESULT response. 
+My goal for this session is to get all three programs communicating correctly before implementing the user menu and history.
