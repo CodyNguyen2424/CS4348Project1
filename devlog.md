@@ -151,3 +151,20 @@ I plan to implement the interactive menu and history feature.
 I will create a while loop that continuously displays the available commands.
 I also plan to create a list to store the history of strings entered by the user and the results of encryption and decryption.
 My goal for this session is to get the menu and history working before connecting the user's choices to the encryption program.
+
+# 10-16-2026 12:44pm - Session 7 End
+I updated driver.py to include the interactive menu and history feature.
+The user is able to enter new strings, view previously entered strings, and select strings from a numbered list.
+
+There were a couple problems while implementing the history feature.
+The first problem was that the history kept resetting whenever the menu appeared again.
+This happened because I had placed history = [] inside the main while loop, which created an empty list every time the loop repeated.
+I fixed this by moving it outside the loop.
+
+The second problem was that passwords were accidentally being saved in history.
+This happened because I was adding every new string to the history list without checking whether it was a password.
+I fixed this by checking whether the entered string was a password before adding it to history. 
+I was able to fix these problems during this session.
+
+The driver does not actually encrypt or decrypt the strings selected by the user yet.
+For my next session, I plan to connect the password, encrypt, and decrypt menu commands to encryption.py using pipes.
