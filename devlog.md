@@ -184,3 +184,10 @@ After making these changes, I tested the driver and it appears to be working as 
 The user can now set a password, encrypt and decrypt strings, and select previously saved strings from history. 
 However, the driver still only logs when the program starts and exits.
 For my next session, I plan to finish the logging functionality in driver.py.
+
+# 10-18-2026 3:06pm - Session 9 Start
+The logging functionality is still incomplete because the driver currently only records when the program starts and exits.
+I plan to update driver.py so that every user command and its result are sent to logger.py.
+For the password command, I plan to only log that a password was set.
+I will test this by running different commands, checking test.log, and making sure the program exits.
+My goal for this session is to finish the logging and shutdown functionality so that all three programs work together.
