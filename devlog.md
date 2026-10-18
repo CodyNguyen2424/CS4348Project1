@@ -168,3 +168,11 @@ I was able to fix these problems during this session.
 
 The driver does not actually encrypt or decrypt the strings selected by the user yet.
 For my next session, I plan to connect the password, encrypt, and decrypt menu commands to encryption.py using pipes.
+
+# 10-17-2026 7:16pm - Session 8 Start
+The password, encrypt, and decrypt commands are not connected to encryption.py yet
+The program currently only displays the selected strings without actually encrypting or decrypting them.
+I plan to connect these commands to the encryption program using pipes.
+I will need to send PASS, ENCRYPT, and DECRYPT commands and receive the RESULT or ERROR responses.
+My goal for this session is to get the password, encrypt, and decrypt menu options working with actual user input. 
+I also want to save the successful encryption and decryption results in history so they can be selected again later.
