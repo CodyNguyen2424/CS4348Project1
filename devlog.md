@@ -191,3 +191,12 @@ I plan to update driver.py so that every user command and its result are sent to
 For the password command, I plan to only log that a password was set.
 I will test this by running different commands, checking test.log, and making sure the program exits.
 My goal for this session is to finish the logging and shutdown functionality so that all three programs work together.
+
+# 10-18-2026 4:14pm - Session 9 End
+I updated driver.py to finish the logging functionality. 
+The driver now logs the password, encrypt, decrypt, history, and quit commands along with their results. 
+The program only records that the password command was selected and whether it succeeded.
+After making these changes, I tested the program and checked test.log. 
+The log file recorded the commands and results with timestamps. 
+I was able to set a password, encrypt HELLO into OIWWC, decrypt OIWWC back into HELLO, display history, and quit. 
+All three programs appear to be working together.

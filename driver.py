@@ -87,6 +87,12 @@ def send_encryption_command(encryption, command):
     return response
 
 
+def send_log_message(logger, message):
+    # Send message to logger process
+    logger.stdin.write(message + "\n")
+    logger.stdin.flush()
+
+
 def main():
     # User gives name of log file
     if len(sys.argv) != 2:
@@ -111,8 +117,7 @@ def main():
         text=True
     )
 
-    logger.stdin.write("START Driver started.\n")
-    logger.stdin.flush()
+    send_log_message(logger, "START Driver started.")
 
     # History exists only while driver is running
     history = []
@@ -129,61 +134,84 @@ def main():
         command = input("Enter a command: ").strip().lower()
 
         if command == "password":
+            # Log password command without password
+            send_log_message(logger, "PASSWORD Password command selected.")
+
             password = choose_string(history, True)
             if password is not None:
                 # Set password in encryption process
                 response = send_encryption_command(encryption, "PASS " + password)
                 print("Password response:", response)
+                send_log_message(logger, response)
+            else:
+                send_log_message(logger, "ERROR Invalid password.")
 
         elif command == "encrypt":
+            send_log_message(logger, "ENCRYPT Encrypt command selected.")
+
             text = choose_string(history, False)
             if text is not None:
                 # Encrypt selected string
                 response = send_encryption_command(encryption, "ENCRYPT " + text)
                 print("Encryption response:", response)
+                send_log_message(logger, response)
 
                 # Save successful result
                 parts = response.split(maxsplit=1)
                 if len(parts) == 2 and parts[0] == "RESULT":
                     history.append(parts[1])
+            else:
+                send_log_message(logger, "ERROR Invalid encryption input.")
 
         elif command == "decrypt":
+            send_log_message(logger, "DECRYPT Decrypt command selected.")
+
             text = choose_string(history, False)
             if text is not None:
                 # Decrypt selected string
                 response = send_encryption_command(encryption, "DECRYPT " + text)
                 print("Decryption response:", response)
+                send_log_message(logger, response)
 
                 # Save successful result
                 parts = response.split(maxsplit=1)
                 if len(parts) == 2 and parts[0] == "RESULT":
                     history.append(parts[1])
+            else:
+                send_log_message(logger, "ERROR Invalid decryption input.")
 
         elif command == "history":
+            send_log_message(logger, "HISTORY History requested.")
             show_history(history)
+            send_log_message(logger, "RESULT History displayed.")
 
         elif command == "quit":
+            send_log_message(logger, "QUIT User requested exit.")
+            send_log_message(logger, "RESULT Program exiting.")
             break
 
         else:
             print("Invalid command. Please choose a command from the menu.")
+            send_log_message(logger, "COMMAND Invalid menu command.")
+            send_log_message(logger, "ERROR Unknown menu command.")
 
-    # Tell both child processes to stop
+    # Stop encryption process
     encryption.stdin.write("QUIT\n")
     encryption.stdin.flush()
 
-    logger.stdin.write("EXIT Driver stopped.\n")
+    # Log exit before stopping logger
+    send_log_message(logger, "EXIT Driver stopped.")
     logger.stdin.write("QUIT\n")
     logger.stdin.flush()
 
-    # Wait until both processes have stopped
+    encryption.stdin.close()
+    logger.stdin.close()
+
+    # Wait for both processes to stop
     encryption.wait()
     logger.wait()
 
-    # Close pipes
-    encryption.stdin.close()
     encryption.stdout.close()
-    logger.stdin.close()
     logger.stdout.close()
 
     print("Both child processes have stopped.")
