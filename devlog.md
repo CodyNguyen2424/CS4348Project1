@@ -176,3 +176,11 @@ I plan to connect these commands to the encryption program using pipes.
 I will need to send PASS, ENCRYPT, and DECRYPT commands and receive the RESULT or ERROR responses.
 My goal for this session is to get the password, encrypt, and decrypt menu options working with actual user input. 
 I also want to save the successful encryption and decryption results in history so they can be selected again later.
+
+# 10-17-2026 7:58pm - Session 8 End
+I updated driver.py to connect the password, encrypt, and decrypt menu commands to encryption.py.
+The driver can now send PASS, ENCRYPT, and DECRYPT commands based on user input instead of using hardcoded test values.
+After making these changes, I tested the driver and it appears to be working as intended. 
+The user can now set a password, encrypt and decrypt strings, and select previously saved strings from history. 
+However, the driver still only logs when the program starts and exits.
+For my next session, I plan to finish the logging functionality in driver.py.

@@ -12,13 +12,29 @@ def show_history(history):
             print(str(i + 1) + ". " + history[i])
 
 
-def enter_new_string(history, is_password):
-    text = input("Enter a new string: ").strip()
-
+def is_valid_string(text):
+    # Check for empty input
     if text == "":
         print("String cannot be empty.")
+        return False
+
+    # Allow uppercase letters only
+    alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    for letter in text:
+        if letter not in alphabet:
+            print("Only letters are allowed.")
+            return False
+
+    return True
+
+
+def enter_new_string(history, is_password):
+    text = input("Enter a new string: ").upper()
+
+    if is_valid_string(text) == False:
         return None
 
+    # Save new strings except passwords
     if is_password == False:
         history.append(text)
 
@@ -59,6 +75,16 @@ def choose_string(history, is_password):
 
         else:
             print("Invalid option. Please enter 1 or 2.")
+
+
+def send_encryption_command(encryption, command):
+    # Send command to encryption process
+    encryption.stdin.write(command + "\n")
+    encryption.stdin.flush()
+
+    # Read response from encryption process
+    response = encryption.stdout.readline().strip()
+    return response
 
 
 def main():
@@ -105,19 +131,33 @@ def main():
         if command == "password":
             password = choose_string(history, True)
             if password is not None:
-                print("Password selected. Command processing comes in Session 8.")
+                # Set password in encryption process
+                response = send_encryption_command(encryption, "PASS " + password)
+                print("Password response:", response)
 
         elif command == "encrypt":
             text = choose_string(history, False)
             if text is not None:
-                print("Selected string:", text)
-                print("Encryption will be connected in Session 8.")
+                # Encrypt selected string
+                response = send_encryption_command(encryption, "ENCRYPT " + text)
+                print("Encryption response:", response)
+
+                # Save successful result
+                parts = response.split(maxsplit=1)
+                if len(parts) == 2 and parts[0] == "RESULT":
+                    history.append(parts[1])
 
         elif command == "decrypt":
             text = choose_string(history, False)
             if text is not None:
-                print("Selected string:", text)
-                print("Decryption will be connected in Session 8.")
+                # Decrypt selected string
+                response = send_encryption_command(encryption, "DECRYPT " + text)
+                print("Decryption response:", response)
+
+                # Save successful result
+                parts = response.split(maxsplit=1)
+                if len(parts) == 2 and parts[0] == "RESULT":
+                    history.append(parts[1])
 
         elif command == "history":
             show_history(history)
@@ -147,6 +187,5 @@ def main():
     logger.stdout.close()
 
     print("Both child processes have stopped.")
-
 
 main()
